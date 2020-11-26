@@ -1,5 +1,5 @@
 # react-graphql
-Some instructions of how to run the project if im not lazy and forget to write it 
+Some instructions on how to run the project if im not lazy and forget to write it 
 
 ## Getting Started
 
