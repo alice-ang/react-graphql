@@ -37,12 +37,12 @@ This will start both the client and the backend using concurrently. The frontend
 
 Frontend:
 ```
-[a link](http://localhost:3000/)
+http://localhost:3000/
 ```
 
 Backend (GraphQL):
 ```
-[a link](http://localhost:3001/graphql)
+http://localhost:3001/graphql
 ```
 
 
