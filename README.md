@@ -33,4 +33,17 @@ Run following command to start application
 npm run start
 ```
 
-This will start both the client and the backend using concurrently
+This will start both the client and the backend using concurrently. The frontend can be accessed on port 3000 and the graphql server on port 3001 /graphql.
+
+Frontend:
+```
+[a link](http://localhost:3000/)
+```
+
+Backend (GraphQL):
+```
+[a link](http://localhost:3001/graphql)
+```
+
+
+
