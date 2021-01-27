@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import ring from "../../assets/svg/ring.svg";
-import { FaHamburger, FaUserAstronaut } from "react-icons/fa";
+import { FaHamburger, FaChevronLeft } from "react-icons/fa";
 import { Breakpoint } from "../../styles";
 
 import { ImCross } from "react-icons/im";
@@ -12,17 +13,20 @@ const Navigation = styled.nav`
   padding: 5px 20px;
   line-height: 10px;
   justify-content: space-between;
-  padding-bottom: 30px;
   /* box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.5); */
 `;
 
 const DrawerMenu = styled.div`
   height: 100%;
+  min-height: 100%;
   width: ${(props) => (props.open ? "250px" : "0px")};
   ${Breakpoint.LaptopOrLarger} {
     width: ${(props) => (props.open ? "350px" : "0px")};
   }
   position: fixed;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   z-index: 1;
   -moz-box-shadow: -3px 0 5px 0 #555;
   -webkit-box-shadow: -3px 0 5px 0 #555;
@@ -34,10 +38,20 @@ const DrawerMenu = styled.div`
   transition: 0.5s;
   padding-top: 60px;
   ul {
-    display: ${(props) => (props.open ? "block" : "none")};
-  }
-  li {
     list-style: none;
+    transition: 0.5s;
+    padding: 0;
+    opacity: ${(props) => (props.open ? 1 : 0)};
+  }
+  li a {
+    color: #555;
+    text-decoration: none;
+    transition: 0.3s;
+    margin: 10px 0px;
+    &:hover {
+      transform: scale(1.1);
+      font-weight: bold;
+    }
   }
 `;
 
@@ -45,18 +59,20 @@ const NavIcon = styled.img`
   width: 30px;
 `;
 
-const Drawer = (props) => {
-  return <DrawerMenu open={props.open}></DrawerMenu>;
-};
-
 export const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const ToggleLink = () => setOpen(!isOpen);
 
+  const options = [
+    { name: "Hem" },
+    { name: "Öva", link: "training" },
+    { name: "Framsteg", link: "progress" },
+    { name: "Statisitk", link: "statistic" },
+    { name: "Inställningar", link: "settings" },
+  ];
   return (
     <div>
       <Navigation>
-        <NavIcon src={ring} />
         <h2>Learn</h2>
         {isOpen ? (
           <ImCross
@@ -76,7 +92,25 @@ export const Navbar = () => {
           />
         )}
       </Navigation>
-      <Drawer open={isOpen} />
+      <DrawerMenu open={isOpen}>
+        <div>
+          <NavIcon src={ring} />
+          <ul>
+            {options.map((option, i) => {
+              return (
+                <li key={i}>
+                  <Link
+                    to={option.link ? `${option.link}` : "/"}
+                    onClick={ToggleLink}
+                  >
+                    {option.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </DrawerMenu>
     </div>
   );
 };

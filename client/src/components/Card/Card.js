@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const CardComponent = styled.div`
   background-color: ${(props) => props.cardColor};
@@ -10,6 +11,7 @@ const CardComponent = styled.div`
   margin: 0;
   border-radius: 20px;
   h2 {
+    color: white;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -19,6 +21,8 @@ const CardComponent = styled.div`
 `;
 export const Card = (props) => (
   <CardComponent cardColor={props.cardColor}>
-    <h2>{props.title}</h2>
+    <Link to={props.link ? `${props.link}` : "/"}>
+      <h2>{props.title}</h2>
+    </Link>
   </CardComponent>
 );
