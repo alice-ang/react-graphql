@@ -18,3 +18,7 @@ export const Gaps = {
   Medium: "15px",
   Large: "25px",
 };
+
+export const Colors = {
+  Primary: "rgb(243, 175, 46)",
+};

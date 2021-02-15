@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Breakpoint } from "../../styles";
 
+const Heart = styled.span`
+  color: #f79;
+`;
 export const Footer = () => {
   const FooterContainer = styled.footer`
     left: 0;
@@ -9,9 +11,17 @@ export const Footer = () => {
     width: 100%;
     text-align: center;
   `;
+
+  const getDate = () => {
+    return new Date().getFullYear();
+  };
+
   return (
     <FooterContainer>
-      <p>Copyright © 2020 | Utvecklad med ♥ av Alice Anglesjö</p>
+      <p>
+        Copyright © {getDate()} | Utvecklad med <Heart>♥</Heart> av Alice
+        Anglesjö
+      </p>
     </FooterContainer>
   );
 };

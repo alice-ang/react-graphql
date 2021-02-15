@@ -1,7 +1,8 @@
 import React from "react";
-import { Card } from "../../components/Card";
+import { ImageCard } from "../../components/Card";
 import styled from "styled-components";
 import { Breakpoint, Gaps } from "../../styles";
+import panda from "../../assets/svg/panda.svg";
 
 const Container = styled("div")({
   display: "flex",
@@ -44,12 +45,13 @@ export const HomePage = () => {
       <CategoryContainer>
         {categories.map((category, i) => {
           return (
-            <Card
-              title={category.title}
-              cardColor={category.color}
-              text={category.description}
-              link={category.link}
+            <ImageCard
               key={i}
+              link={category.link}
+              src={panda}
+              text={category.title}
+              backgroundColor={category.color}
+              iconWidth={"50%"}
             />
           );
         })}

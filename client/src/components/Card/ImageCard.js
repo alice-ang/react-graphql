@@ -10,31 +10,26 @@ const Card = styled.div`
   background-color: ${(props) => props.backgroundColor};
   position: relative;
   border-radius: 5px;
-`;
-const Container = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  h3 {
-    margin: 0;
-    color: #fff;
-    text-align: center;
+  a {
+    color: #ffff;
+    margin-left: 1em;
+    position: absolute;
+    text-decoration: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     ${Breakpoint.LaptopOrLarger} {
-      margin-top: 20px;
+      font-size: 1.5em;
     }
   }
 `;
+
 export const ImageCard = (props) => {
   const { backgroundColor, src, link, text, iconWidth } = props;
   return (
     <Card backgroundColor={backgroundColor}>
-      <Container>
-        <Icon src={src} width={iconWidth} />
-        <Link to={link ? `${link}` : "/"}>
-          <h4>{text}</h4>
-        </Link>
-      </Container>
+      <Icon src={src} width={iconWidth} />
+      <Link to={link ? `${link}` : "/"}>{text}</Link>
     </Card>
   );
 };

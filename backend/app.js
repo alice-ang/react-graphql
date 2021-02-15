@@ -1,60 +1,33 @@
-const express = require("express");
-const { graphqlHTTP } = require("express-graphql");
-const { buildSchema, GraphQLObjectType } = require("graphql");
-const {
-  GraphgQLID,
-  GraphQLString,
-  GraphQLList,
-  GraphQLType,
+var express = require("express");
+var { graphqlHTTP } = require("express-graphql");
+var {
+  buildSchema,
   GraphQLSchema,
-  GraphQLNonNull,
-  GraphObjectType,
+  GraphQLObjectType,
+  GraphQLString,
 } = require("graphql");
-const mongoose = require("mongoose");
 
 // Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
+const schema = new GraphQLSchema({
+  query: GraphQLObjectType({
+    name: "HelloWorld",
+    fields: () => ({
+      message: {
+        type: GraphQLString,
+        resolve: () => "Hello World",
+      },
+    }),
+  }),
+});
+
 // The root provides a resolver function for each API endpoint
-const root = {
+var root = {
   hello: () => {
     return "Hello world!";
   },
 };
 
-const app = express();
-
-const TaskModel = mongoose.model("task", {
-  text: String,
-  description: String,
-  priority: String,
-  status: String,
-});
-
-const TaskType = new GraphQLObjectType({
-  name: "Task",
-  fields: {
-    id: { type: GraphgQLID },
-    description: { type: GraphQLString },
-    priority: { type: GraphQLString },
-    status: { type: GraphQLString },
-  },
-});
-async function loadTaskCollection() {
-  const client = await mongodb.MongoClient.connect(
-    "mongodb+srv://admin:8oUk9TBD@cluster0-xmesc.mongodb.net/test?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  );
-
-  return client.db("vue_express").collection("tasks");
-}
-
+var app = express();
 app.use(
   "/graphql",
   graphqlHTTP({
@@ -64,5 +37,4 @@ app.use(
   })
 );
 app.listen(3001);
-console.log("Running a GraphQL API server at http://localhost:3000/graphql");
-module.exports = app;
+console.log("Running a GraphQL API server at http://localhost:3001/graphql");

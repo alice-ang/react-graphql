@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import ring from "../../assets/svg/ring.svg";
-import { FaHamburger, FaChevronLeft } from "react-icons/fa";
+import { FaHamburger } from "react-icons/fa";
 import { Breakpoint } from "../../styles";
 
 import { ImCross } from "react-icons/im";
@@ -27,7 +26,8 @@ const DrawerMenu = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  align-items: center;
+  z-index: 10;
   -moz-box-shadow: -3px 0 5px 0 #555;
   -webkit-box-shadow: -3px 0 5px 0 #555;
   box-shadow: -3px 0 5px 0 #555;
@@ -36,7 +36,6 @@ const DrawerMenu = styled.div`
   background-color: papayawhip;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
   ul {
     list-style: none;
     transition: 0.5s;
@@ -53,10 +52,6 @@ const DrawerMenu = styled.div`
       font-weight: bold;
     }
   }
-`;
-
-const NavIcon = styled.img`
-  width: 30px;
 `;
 
 export const Navbar = () => {
@@ -94,7 +89,6 @@ export const Navbar = () => {
       </Navigation>
       <DrawerMenu open={isOpen}>
         <div>
-          <NavIcon src={ring} />
           <ul>
             {options.map((option, i) => {
               return (

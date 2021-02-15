@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Breakpoint } from "../../styles";
-import ring from "../../assets/svg/ring.svg";
+import lion from "../../assets/svg/lejon.svg";
 import { Hero, ImageCard } from "../../components/index";
 const GamePageContainer = styled.div`
   margin: 5px 5px;
@@ -43,13 +43,14 @@ export const GamePage = () => {
     <div>
       <Hero title="title" />
       <GamePageContainer>
-        {test.map((item) => {
+        {test.map((item, i) => {
           return (
             <ImageCard
-              src={ring}
+              key={i}
+              src={lion}
               text={item.title}
               backgroundColor={item.color}
-              iconWidth={"100%"}
+              iconWidth={"50%"}
             />
           );
         })}
