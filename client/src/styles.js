@@ -12,3 +12,13 @@ export const Breakpoint = {
   BigScreenOrLarger: "@media (min-width: 1246px)",
   TabletOrSmaller: "@media (max-width: 812px)",
 };
+
+export const Gaps = {
+  Small: "10px",
+  Medium: "15px",
+  Large: "25px",
+};
+
+export const Colors = {
+  Primary: "rgb(243, 175, 46)",
+};
